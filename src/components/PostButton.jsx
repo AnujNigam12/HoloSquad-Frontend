@@ -7,6 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const PostButton = (props) => {
+  let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
   let ctx = useContext(UserContext);
   // console.log(ctx)
@@ -36,7 +37,7 @@ const PostButton = (props) => {
 
 
 
-    let res = await axios.post("https://socialmediabackend-abt5.onrender.com/posts/create", details, {
+    let res = await axios.post(url+"/posts/create", details, {
       headers: {
         "Authorization" : ctx.user.token
       }

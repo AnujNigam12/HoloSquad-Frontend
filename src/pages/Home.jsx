@@ -15,6 +15,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+  let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
   const [commentOpen, setCommentOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState({})
@@ -26,7 +27,7 @@ const Home = () => {
   const [allPost, SetAllPost] = useState([]);
  
   const getAllPosts = async() => {
-    let res = await axios.get("https://socialmediabackend-abt5.onrender.com/posts/getAllPost");
+    let res = await axios.get(url + "/posts/getAllPost");
 
 
     let data = res.data.post;
@@ -74,7 +75,7 @@ const updatedData = data.map((post) => ({
       text: commentInput[ele._id]
     }
 
-    let res = await axios.post(`https://socialmediabackend-abt5.onrender.com/posts/commentPost/${ele._id}`, obj, {
+    let res = await axios.post(url + `/posts/commentPost/${ele._id}`, obj, {
       headers: {
         Authorization: ctx.user.token
       }
@@ -104,7 +105,7 @@ const updatedData = data.map((post) => ({
     console.log(item._id);
     console.log(ele._id);
 
-    let res = await axios.delete(`https://socialmediabackend-abt5.onrender.com/posts/deleteComment/${commentId}/${postId}`);
+    let res = await axios.delete(url + `/posts/deleteComment/${commentId}/${postId}`);
 
 
     let data = await res.data;
@@ -133,7 +134,7 @@ const updatedData = data.map((post) => ({
     let postId = ele._id;
     let token = ctx.user.token;
   
-    let res = await axios.put(`https://socialmediabackend-abt5.onrender.com/posts/likesPost/${postId}`, {}, {
+    let res = await axios.put(url + `/posts/likesPost/${postId}`, {}, {
       headers: {
         Authorization: token
       }

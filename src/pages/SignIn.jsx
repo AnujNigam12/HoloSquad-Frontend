@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import UserContext from '../context/UserContext';
 
 const SignIn = () => {
+  let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
   const ctx = useContext(UserContext)
 
@@ -27,7 +28,7 @@ const handleClick = async (e) => {
 
   // after , obj will automatically goes in req.body
 
-  let res = await axios.post("https://socialmediabackend-abt5.onrender.com/users/login", obj);
+  let res = await axios.post(url + "/users/login", obj);
 
 
   let data = await res.data;

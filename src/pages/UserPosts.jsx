@@ -5,8 +5,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 const UserPosts = () => {
-
-
+  let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
    const [yourAllPosts, setYourAllPosts] =  useState([]);
 
@@ -18,7 +17,7 @@ const UserPosts = () => {
 
 
    const getYourAllPosts = async () => {
-    let res = await axios.get("https://socialmediabackend-abt5.onrender.com/posts/getYourAllPosts",{
+    let res = await axios.get(url + "/posts/getYourAllPosts",{
         headers: {
             Authorization: token
         }

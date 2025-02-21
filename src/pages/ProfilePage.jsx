@@ -11,6 +11,7 @@ import { IoMdMail } from "react-icons/io";
 import UserFollowersFollowings from '../components/UserFollowersFollowings';
 
 const ProfilePage = () => {
+  let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
       const [setting, setSetting] = useState(false);
 
@@ -84,7 +85,7 @@ const ProfilePage = () => {
      //  get User Details -----------------
     const getUserDetails = async () => {
 
-       let res = await axios.get("https://socialmediabackend-abt5.onrender.com/users/getUserDetails", {
+       let res = await axios.get(url + "/users/getUserDetails", {
         headers: {
           Authorization: token
         }
@@ -117,7 +118,7 @@ try {
 
   if (data) {
     setImage(false);
-    let res1 = await fetch(`https://socialmediabackend-abt5.onrender.com/users/update/${userId}`,{
+    let res1 = await fetch(url + `/users/update/${userId}`,{
      method: "PUT",
      headers: {
       "Content-type": "application/json",
@@ -178,7 +179,7 @@ console.log(data);
 
 if (data) {
   setCoverImage(false);
-let res1 = await fetch(`https://socialmediabackend-abt5.onrender.com/users/update/${userId}`,{
+let res1 = await fetch(url + `/users/update/${userId}`,{
  method: "PUT",
  headers: {
   "Content-type": "application/json",
@@ -268,7 +269,7 @@ toast.error("Failed to update cover Pic", {position: "top-center", theme: "color
 
 
       try {
-        let res = await fetch(`https://socialmediabackend-abt5.onrender.com/users/update/${userId}`, {
+        let res = await fetch(url + `/users/update/${userId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -350,7 +351,7 @@ toast.error("Failed to update cover Pic", {position: "top-center", theme: "color
    
 
     try {
-      let res = await fetch(`https://socialmediabackend-abt5.onrender.com/users/update/${userId}`,{
+      let res = await fetch(url + `/users/update/${userId}`,{
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -434,7 +435,7 @@ toast.error("Failed to update cover Pic", {position: "top-center", theme: "color
 
 
     try {
-      let res = await axios.put(`https://socialmediabackend-abt5.onrender.com/users/update/${userId}`,contact, {
+      let res = await axios.put(url + `/users/update/${userId}`,contact, {
         headers: {
           "Authorization" : token
         }
@@ -507,7 +508,7 @@ toast.error("Failed to update cover Pic", {position: "top-center", theme: "color
     }, 2000);
 
     try {
-      let res = await fetch(`https://socialmediabackend-abt5.onrender.com/users/update/${userId}`,{
+      let res = await fetch(url + `/users/update/${userId}`,{
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -584,7 +585,7 @@ toast.error("Failed to update cover Pic", {position: "top-center", theme: "color
        }, 2000);
 
        try {
-        let res = await fetch(`https://socialmediabackend-abt5.onrender.com/users/update/${userId}`, {
+        let res = await fetch(url + `/users/update/${userId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

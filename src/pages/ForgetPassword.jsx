@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 const ForgetPassword = () => {
+  let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
   const navigate = useNavigate();
   const [input, setInput] = useState({
@@ -30,7 +31,7 @@ const ForgetPassword = () => {
   const handleClick = async (e) => {
     e.preventDefault();
 
-    let res = await axios.post ("https://socialmediabackend-abt5.onrender.com/users/forgetPassword", input)
+    let res = await axios.post (url + "/users/forgetPassword", input)
 
 
     let data = await res.data;

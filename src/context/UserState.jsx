@@ -5,6 +5,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const UserState = (props) => {
+    let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
 let userDetails = JSON.parse(localStorage.getItem("userLogin"));
   
@@ -56,7 +57,7 @@ const removeUser = () => {
 const loginUserDetails = async () => {
     if (user.login) {
         try {
-            let res = await axios.get("https://socialmediabackend-abt5.onrender.com/users/getUserDetails", {
+            let res = await axios.get(url + "/users/getUserDetails", {
                 headers: {
                     Authorization : user.token
                 }

@@ -19,7 +19,9 @@ const Chats = () => {
 
     const navigate = useNavigate();
 
-    let endPoint = 'https://socialmediabackend-abt5.onrender.com'
+    let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
+
+    let endPoint = 'https://holosquad-backend.onrender.com'
     let socketRef = useRef();
     const [messageBySocket, setMessageBySocket] = useState("");
 
@@ -56,7 +58,7 @@ const Chats = () => {
 
     const handleSelectedFriend = async (user) => {
         navigate(`?friendId=${user?._id}`, {replace : true}); 
-        let res  = await axios.get(`https://socialmediabackend-abt5.onrender.com/messages/getChats/${user?._id}`, {
+        let res  = await axios.get(url + `/messages/getChats/${user?._id}`, {
             headers: {
                 "Authorization": ctx.user.token
             }
@@ -82,7 +84,7 @@ const Chats = () => {
             text: message
          }  
 
-       let res = await axios.post(`https://socialmediabackend-abt5.onrender.com/messages/sendMessage/${friendId}`, obj, {
+       let res = await axios.post(url + `/messages/sendMessage/${friendId}`, obj, {
       headers : {
         "Authorization" : ctx?.user?.token
       }
