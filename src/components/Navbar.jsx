@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import { FaLocationDot } from "react-icons/fa6";
 import { BsFillChatSquareHeartFill } from "react-icons/bs";
 import { IoNotificationsCircle } from "react-icons/io5";
-
+import Logo from '../assets/Logo.jpeg'
 
 const Navbar = () => { 
 let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
@@ -52,10 +52,8 @@ let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_EN
   return (
         <div className="container fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-purple-400 via-pink-400 to-green-400  mx-auto flex flex-wrap px-5 py-2 flex-col md:flex-row items-center">
             <Link to={"/"} className="flex title-font justify-center font-medium items-center text-gray-900 mb-5 md:mb-0">
-               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} className="w-10 h-10 text-white p-2 bg-red-500 rounded-full" viewBox="0 0 24 24">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-              </svg>
-              <span className="ml-3 bg-gradient-to-r from-blue-800 to-green-500 bg-clip-text text-transparent text-3xl font-extrabold">Instamart</span>
+               <img src={Logo} alt="Logo" className='rounded-3xl' style={{height:'50px'}}/>
+              <span className="ml-3 bg-gradient-to-r from-blue-800 to-green-500 bg-clip-text text-transparent text-3xl font-extrabold">HoloSquad</span>
             </Link>
 
 

@@ -3,6 +3,7 @@ import React, { useContext, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import UserContext from '../context/UserContext';
+import Logo from '../assets/Logo.jpeg'
 
 const SignIn = () => {
   let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
@@ -52,7 +53,7 @@ const handleClick = async (e) => {
     <div className='flex justify-center items-center'>
     <div className="flex w mt-8 h-4/6 border rounded-xl flex-col bg-gray-100 justify-center px-6 py-2 lg:px-8">
   <div className="sm:mx-auto sm:w-full sm:max-w-sm h-22">
-    <img className="mx-auto h-16 w-auto" src="https://res.cloudinary.com/dqo56owj9/image/upload/v1735624119/xdrw7mmzpodjxoly2vaq.png" alt="Your Company" />
+    <img src={Logo} alt="Logo" className='rounded-3xl mx-auto w-auto' style={{height:'50px'}}/>
     <h2 className=" text-center text-2xl/9 font-bold tracking-tight text-red-600">Sign in to your account</h2>
   </div>
   <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
