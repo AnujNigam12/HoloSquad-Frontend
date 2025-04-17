@@ -14,6 +14,7 @@ import FriendProfilePage from './pages/FriendProfilePage'
 import FriendChat from './pages/FriendChat'
 import PostPage from './pages/PostPage'
 import Chats from './pages/Chats'
+import Notifications from './pages/Notifications'
 
 function App() {
 
@@ -53,6 +54,8 @@ let login = ctx.user.login;
          <Route path={`/post`} element={login === true ? <PostPage /> : <Navigate to={"/signin"} />} />
 
          <Route path={`/Chats`} element={login === true ? <Chats /> : <Navigate to={"/signin"} />} />
+
+         <Route path={'/Notification'} element={login === true ? <Notifications /> : <Navigate to={"/signin"} />} />
        </Routes>
       
 

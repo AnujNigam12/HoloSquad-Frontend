@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import Logo from '../assets/Logo.jpeg'
 
 const SignUp = () => {
-  let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
+  // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
   const navigate = useNavigate()
   const [input, setInput] = useState(
@@ -38,7 +38,8 @@ const SignUp = () => {
     // console.log(input);
 
 
-   let res = await fetch(url + "/users/create", {
+  //  let res = await fetch(url + "/users/create", {
+   let res = await fetch("http://localhost:4000/users/create", {
     method: "POST", 
     headers: {
      "Content-type": "application/json"

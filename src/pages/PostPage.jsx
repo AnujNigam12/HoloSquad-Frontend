@@ -7,7 +7,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const PostPage = () => {
-let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
+// let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
     const [post, setPost] = useState("")  
     let ctx = useContext(UserContext);
@@ -24,7 +24,8 @@ let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_EN
 
 
     const getPostById = async () => {
-      let res = await axios.get(url + `/posts//getPostById/${postId}`);
+      // let res = await axios.get(url + `/posts//getPostById/${postId}`);
+      let res = await axios.get(`http://localhost:4000/posts//getPostById/${postId}`);
       let data = await res.data;
       console.log(data);
       if (data.success) {
@@ -35,7 +36,8 @@ let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_EN
     const handleLikeDislikePost = async (ele) => {
       const postId = ele?._id;
       let token = ctx.user.token;
-      const res = await axios.put(url + `/posts/likesPost/${postId}`,{}, {
+      // const res = await axios.put(url + `/posts/likesPost/${postId}`,{}, {
+      const res = await axios.put(`http://localhost:4000/posts/likesPost/${postId}`,{}, {
         headers: {
           "Authorization": token
         }
@@ -59,7 +61,8 @@ let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_EN
       let obj = {
         text: commentRef.current.value
       }
-      let res = await axios.post(url + `/posts/commentPost/${postId}`,obj,{
+      // let res = await axios.post(url + `/posts/commentPost/${postId}`,obj,{
+      let res = await axios.post(`http://localhost:4000/posts/commentPost/${postId}`,obj,{
         headers: {
           "Authorization": ctx.user.token
         }
@@ -79,7 +82,8 @@ let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_EN
     }
 
     const handleDeleteComment =  async (commentId) => {
-      let res = await axios.delete(url + `/posts/deleteComment/${commentId}/${postId}`);
+      // let res = await axios.delete(url + `/posts/deleteComment/${commentId}/${postId}`);
+      let res = await axios.delete(`http://localhost:4000/posts/deleteComment/${commentId}/${postId}`);
 
       let data = await res.data;
       console.log(data); 
@@ -105,39 +109,37 @@ let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_EN
 
 
 return (
-<div className="max-w-3xl flex  mx-auto  px-3 mt-[90px] bg-gray-700 shadow-lg rounded-lg">
+<div className="max-w-3xl flex  mx-auto  px-3 mt-[90px] bg-gray-700 shadow-lg rounded-lg" style={{background: 'linear-gradient(to right,rgb(132, 137, 141),rgb(52, 138, 175))', boxShadow:'15px 15px 15px'}}>
  
-
-
                 {/* Left */}
   <div className="w-[50%] mt-2">
       {
         post?.file ? (
           post?.file?.includes("image") ? (
             <div onClick={() => MediaModal(post?.file)} className='mx-auto w-72'>
-                  <img src={post?.file} className='w-72 h-72 cursor-cell rounded-lg border-[1px] border-red-500 ' alt="" />
+                  <img src={post?.file} className='w-72 h-72 cursor-cell rounded-lg mt-5'style={{ boxShadow:'15px 15px 15px'}} alt="" />
             </div>
            
           ) : (
             post?.file?.includes("video") ? (
-              <div onClick={() => MediaModal(post?.file)} className='w-72 h-72 mx-auto border-[1px] border-red-500'>
-                       <video className='object-cover cursor-cell h-72 w-72 rounded-lg' controls  src={post?.file}></video>
+              <div onClick={() => MediaModal(post?.file)} className='w-72 h-72 mx-auto'>
+                       <video className='object-cover cursor-cell h-72 w-72 rounded-lg mt-5'style={{ boxShadow:'15px 15px 15px'}}  controls  src={post?.file}></video>
               </div>
            
             ) : (
               post?.file?.includes("audio") ? (
                  <div  className='w-72 cursor-not-allowed h-72 mx-auto flex items-end  rounded-lg bg-[url("https://media.tenor.com/b3pZMIW1I-UAAAAM/audio-beat.gif")]'>
-                  <audio className='h-10  w-72 ' controls src={post?.file}></audio>
+                  <audio className='h-10  w-72 mt-5' style={{ boxShadow:'15px 15px 15px'}}  controls src={post?.file}></audio>
                  </div>
               ) : (
-                <div className='w-72 cursor-not-allowed h-72 flex items-end justify-center mx-auto  rounded-lg bg-[url("https://png.pngtree.com/element_our/20200610/ourmid/pngtree-not-found-image_2238448.jpg")]'>
+                <div className='w-72 cursor-not-allowed h-72 flex items-end justify-center mx-auto mt-5 rounded-lg bg-[url("https://png.pngtree.com/element_our/20200610/ourmid/pngtree-not-found-image_2238448.jpg")]'>
                     <p className='text-red-600 font-medium text-center'>Unsupported file type 🫤</p>
                 </div>
               )
             )
           )
         ) : (
-          <div className='w-72 h-72 cursor-not-allowed mx-auto flex items-end justify-center rounded-lg bg-[url("https://png.pngtree.com/element_our/20200610/ourmid/pngtree-not-found-image_2238448.jpg")]'>
+          <div className='w-72 h-72 cursor-not-allowed mx-auto mt-5 flex items-end justify-center rounded-lg bg-[url("https://png.pngtree.com/element_our/20200610/ourmid/pngtree-not-found-image_2238448.jpg")]'>
               <p className='text-red-600 font-medium'>No File found😒</p>
           </div>
         )
@@ -145,9 +147,9 @@ return (
       }
    
     <div className='flex flex-col pt-5 gap-3 '>
-   <h1 className="text-2xl text-center text-white capitalize font-serif mb-2">{post?.title}</h1>
+   <h1 className="text-2xl text-center capitalize font-serif mb-2 bg-gradient-to-r from-blue-800 to-green-900 bg-clip-text text-transparent">{post?.title}</h1>
   {/* Description */}
-  <p className="text-white text-center mb-4 px-2 font-serif">
+  <p className=" bg-gradient-to-r from-blue-800 to-green-900 bg-clip-text text-transparent text-center mb-4 px-2 font-serif">
 {
     post?.description
 }  </p>

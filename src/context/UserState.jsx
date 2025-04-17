@@ -5,7 +5,9 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const UserState = (props) => {
-    let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
+    // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
+    const [count, setCount] = useState(0)
+    const [messCount, setMessCount] = useState(0)
 
 let userDetails = JSON.parse(localStorage.getItem("userLogin"));
   
@@ -57,7 +59,8 @@ const removeUser = () => {
 const loginUserDetails = async () => {
     if (user.login) {
         try {
-            let res = await axios.get(url + "/users/getUserDetails", {
+            // let res = await axios.get(url + "/users/getUserDetails", {
+            let res = await axios.get("http://localhost:4000/users/getUserDetails", {
                 headers: {
                     Authorization : user.token
                 }
@@ -88,7 +91,7 @@ useEffect(() => {
 
   return (
     
-    <UserContext.Provider value={{user, addUser, removeUser, loginUserDetails}}>
+    <UserContext.Provider value={{user, addUser, removeUser, loginUserDetails, count, setCount, messCount, setMessCount}}>
           {props.children}
     </UserContext.Provider>
   )

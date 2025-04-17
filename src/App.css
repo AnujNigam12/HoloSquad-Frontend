@@ -1,9 +1,12 @@
 body{
     scroll-behavior: smooth;
-    /* background: linear-gradient(to right, #fef3c7, #fecaca, #d1fae5); */
-    background: linear-gradient(258deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+    /* background: linear-gradient(to right, #FF000080,#FFC0CB80); */
+    /* background: linear-gradient(to right, #FF0000B3,#FFC0CBB3); */
+    /* background: linear-gradient(to right, #011425, #1F4959); */
+    background-color: #abcacf;
     font-family: 'Dancing Script', cursive;
     font-weight: 900;
+    /* color: #090551; */
   }
 
 body::-webkit-scrollbar {

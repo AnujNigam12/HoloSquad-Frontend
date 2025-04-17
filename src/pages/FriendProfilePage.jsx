@@ -15,7 +15,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { IoChatboxEllipses } from "react-icons/io5";
 
 const FriendProfilePage = () => {
-  let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
+  // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
 
    let ctx = useContext(UserContext);
    console.log(ctx); 
@@ -45,7 +45,8 @@ const FriendProfilePage = () => {
    const [selectedPost, setSelectedPost] = useState({})
    
    const getUserById = async () => {
-    let res = await axios.get(url + `/users/getUserById/${friendId}`);
+    // let res = await axios.get(url + `/users/getUserById/${friendId}`);
+    let res = await axios.get(`http://localhost:4000/users/getUserById/${friendId}`);
 
     let data = await res.data.data;
     // console.log(data);
@@ -53,7 +54,8 @@ const FriendProfilePage = () => {
    }
 
    const getFriendAllPosts = async () => {
-    let res = await axios.get(url + `/posts/getFriendAllPosts/${friendId}`);
+    // let res = await axios.get(url + `/posts/getFriendAllPosts/${friendId}`);
+    let res = await axios.get(`http://localhost:4000/posts/getFriendAllPosts/${friendId}`);
 
     let data = await res.data.data;
 
@@ -67,7 +69,8 @@ const FriendProfilePage = () => {
    }
 
    const handleFollowFollowing = async () => {
-      let res = await axios.post(url + `/users/followFollowings/${friendId}`,{}, {
+      // let res = await axios.post(url + `/users/followFollowings/${friendId}`,{}, {
+      let res = await axios.post(`http://localhost:4000/users/followFollowings/${friendId}`,{}, {
         headers: {
             "Authorization": token
         }
@@ -105,7 +108,8 @@ const FriendProfilePage = () => {
         text: comment[postId]
      }
 
-     let res = await axios.post(url + `/posts/commentPost/${postId}`, obj, {
+    //  let res = await axios.post(url + `0/posts/commentPost/${postId}`, obj, {
+     let res = await axios.post(`http://localhost:4000/posts/commentPost/${postId}`, obj, {
         headers: {
             "Authorization": token
         }
@@ -146,7 +150,8 @@ const FriendProfilePage = () => {
       let commentId = item._id;
       let postId = selectedPost._id;
 
-      let res = await axios.delete(url + `/posts/deleteComment/${commentId}/${postId}`);
+      // let res = await axios.delete(url + `/posts/deleteComment/${commentId}/${postId}`);
+      let res = await axios.delete(`http://localhost:4000/posts/deleteComment/${commentId}/${postId}`);
 
       let data = await res.data;
       console.log(data);
@@ -171,7 +176,8 @@ const FriendProfilePage = () => {
     let postId = ele._id;
     let token = ctx.user.token
 
-    let res = await axios.put(url + `/posts/likesPost/${postId}`, {}, {
+    // let res = await axios.put(url + `/posts/likesPost/${postId}`, {}, {
+      let res = await axios.put(`http://localhost:4000/posts/likesPost/${postId}`, {}, {
         headers: {
             "Authorization" : token
         }
