@@ -15,15 +15,16 @@ import FriendChat from './pages/FriendChat'
 import PostPage from './pages/PostPage'
 import Chats from './pages/Chats'
 import Notifications from './pages/Notifications'
+import SettingsPanel from './pages/setting'
 
 function App() {
 
-let ctx  = useContext(UserContext);
+  let ctx = useContext(UserContext);
 
-// console.log(ctx)
+  // console.log(ctx)
 
-let login = ctx.user.login;
-// console.log(login)
+  let login = ctx.user.login;
+  // console.log(login)
 
   return (
     <>
@@ -31,41 +32,43 @@ let login = ctx.user.login;
       <BrowserRouter>
 
 
-       <div className='mb-[70px]'>
+        <div className='mb-[70px]'>
           <Navbar />
-       </div>
-      
-   
-       <Routes> 
-
-         <Route path='/' element={login === true ? <Home /> : <Navigate to={"/signin"} />}/>
-         <Route path='/signin' element={login === false ? <SignIn /> : <Navigate to={"/"} />}/>
-         <Route path='/signup' element={login === false ? <SignUp /> : <Navigate to={"/"} />}/>
-         <Route path='/forgetPassword' element={login === false ? <ForgetPassword /> : <Navigate to={"/"} />} />
-
-         <Route path='/profilePage' element={login === true ? <ProfilePage /> : <Navigate to={"/signin"} />} />
-
-         <Route path={`/posts`} element={login === true ?  <UserPosts /> : <Navigate to={"/signin"} />} />
-
-         <Route path={`/friendProfile`} element={login === true ? <FriendProfilePage /> : <Navigate to={"/signin"} /> } />
-
-         <Route path={`/friendProfile/friendChat`} element={login === true ? <FriendChat /> : <Navigate to={"/signin"} />} />
-
-         <Route path={`/post`} element={login === true ? <PostPage /> : <Navigate to={"/signin"} />} />
-
-         <Route path={`/Chats`} element={login === true ? <Chats /> : <Navigate to={"/signin"} />} />
-
-         <Route path={'/Notification'} element={login === true ? <Notifications /> : <Navigate to={"/signin"} />} />
-       </Routes>
-      
+        </div>
 
 
-       <ToastContainer  autoClose={2000} pauseOnHover={false} />
+        <Routes>
+
+          <Route path='/' element={login === true ? <Home /> : <Navigate to={"/signin"} />} />
+          <Route path='/signin' element={login === false ? <SignIn /> : <Navigate to={"/"} />} />
+          <Route path='/signup' element={login === false ? <SignUp /> : <Navigate to={"/"} />} />
+          <Route path='/forgetPassword' element={login === false ? <ForgetPassword /> : <Navigate to={"/"} />} />
+
+          <Route path='/profilePage' element={login === true ? <ProfilePage /> : <Navigate to={"/signin"} />} />
+
+          <Route path={`/posts`} element={login === true ? <UserPosts /> : <Navigate to={"/signin"} />} />
+
+          <Route path={`/friendProfile`} element={login === true ? <FriendProfilePage /> : <Navigate to={"/signin"} />} />
+
+          <Route path={`/friendProfile/friendChat`} element={login === true ? <FriendChat /> : <Navigate to={"/signin"} />} />
+
+          <Route path={`/post`} element={login === true ? <PostPage /> : <Navigate to={"/signin"} />} />
+
+          <Route path={`/Chats`} element={login === true ? <Chats /> : <Navigate to={"/signin"} />} />
+
+          <Route path={'/Notification'} element={login === true ? <Notifications /> : <Navigate to={"/signin"} />} />
+
+          <Route path={'/setting'} element={login === true ? <SettingsPanel /> : <Navigate to={"/signin"} />} />
+        </Routes>
+
+
+
+        <ToastContainer autoClose={2000} pauseOnHover={false} />
 
 
       </BrowserRouter>
 
-      
+
     </>
   )
 }

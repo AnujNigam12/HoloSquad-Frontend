@@ -6,6 +6,8 @@ import UserContext from '../context/UserContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { FaRegImages } from "react-icons/fa6";
+import { IoSettingsSharp } from "react-icons/io5";
+import { Link } from "react-router-dom"
 
 const PostButton = (props) => {
   // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
@@ -131,14 +133,20 @@ const PostButton = (props) => {
   return (<>
 
     <div className='h-full px-[60px] pt-5 mt-8 fixed rounded-lg' style={{ background: 'linear-gradient(to right,rgb(132, 137, 141),rgb(52, 138, 175))', border:'1px solid black', boxShadow:'15px 15px 15px'}}>
-      <div className='flex hover:bg-gray-200 hover:text-gray-900 p-2 rounded-lg shadow-lg' style={{color:'#08536c'}}>
-        <FaRegImages className='text-4xl mr-5' />
-        <button onClick={handleClick} className='font-bold p-1 rounded-lg text-lg'>Create a Post 📤</button>
+      <div className='hover:bg-gray-200 hover:text-gray-900 p-2 rounded-lg shadow-lg' style={{color:'#08536c'}}>
+        <button onClick={handleClick} className='flex font-bold p-1 rounded-lg text-lg'>
+        <FaRegImages className='text-4xl mr-5 text-white' />
+          Create a Post 
+          </button>
+      </div>
+
+      <div className='hover:bg-gray-200 hover:text-gray-900 p-2 rounded-lg shadow-lg mt-5' style={{color:'#08536c'}}>
+        <Link to={'/setting'}  className='flex font-bold p-1 rounded-lg text-lg'>
+        <IoSettingsSharp className='text-4xl mr-5 text-white' />
+          Setting
+          </Link>
       </div>
     </div>
-
-
-
 
     <Modal
       className="custom-modal"
@@ -152,12 +160,8 @@ const PostButton = (props) => {
         <Button className='bg-green-400' key="submit" type="primary" loading={loading} onClick={handleSubmitPost}>
           Post
         </Button>
-
       ]}
     >
-
-
-
 
       <div className="min-h-full flex  justify-center mt-6">
         <div className="w-full max-w-lg shadow-md rounded-lg p-6">
@@ -216,8 +220,6 @@ const PostButton = (props) => {
                 </span>
               </label>
 
-
-
               <input hidden
                 onChange={handleFileChanger}
                 type="file"
@@ -225,10 +227,7 @@ const PostButton = (props) => {
                 name="file"
                 className="w-full"
               />
-
             </div>
-
-
 
             {image ? (<div className='loader animate-spin rounded-full h-8 w-8 border-t-4 border-green-400 border-solid '></div>) : (
               details.file ? (details.file.includes("image") ? (
@@ -240,11 +239,8 @@ const PostButton = (props) => {
               ) : (
                 <p className='text-red-400'>Unsupported file type!</p>
               )) : ("")
-
             )
             }
-
-
           </form>
         </div>
       </div>
