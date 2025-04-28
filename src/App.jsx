@@ -16,6 +16,7 @@ import PostPage from './pages/PostPage'
 import Chats from './pages/Chats'
 import Notifications from './pages/Notifications'
 import SettingsPanel from './pages/setting'
+import Main from './components/Main'
 
 function App() {
 
@@ -30,7 +31,6 @@ function App() {
     <>
       <Main>
         <BrowserRouter>
-
 
           <div className='mb-[70px]'>
             <Navbar />
