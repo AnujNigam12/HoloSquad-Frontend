@@ -15,9 +15,7 @@ import { MdContacts } from "react-icons/md";
 
 const FriendChat = () => {
 
-  let endPoint = "http://localhost:4000"
-
-  // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
+  let endPoint = "https://holosquad-backend.onrender.com"
 
   const [conversation, setConversation] = useState([]);
 
@@ -42,7 +40,7 @@ const FriendChat = () => {
 
   const getChats = async () => {
     // let res  = await axios.get(url + `/messages/getChats/${friendId}`, {
-    let res = await axios.get(`http://localhost:4000/messages/getChats/${friendId}`, {
+    let res = await axios.get(`https://holosquad-backend.onrender.com/messages/getChats/${friendId}`, {
       headers: {
         "Authorization": token
       }
@@ -57,7 +55,7 @@ const FriendChat = () => {
     setConversation(updatedData);
 
     //Sending Notification of Like
-    let noti = await axios.post("http://localhost:4000/notifications/send", {
+    let noti = await axios.post("https://holosquad-backend.onrender.com/notifications/send", {
       recipient: friendId,
       sender: userId,
       type: "Message",
@@ -77,7 +75,7 @@ const FriendChat = () => {
     // console.log(obj);
 
     // let res = await axios.post(url + `/messages/sendMessage/${friendId}`, obj, {
-    let res = await axios.post(`http://localhost:4000/messages/sendMessage/${friendId}`, obj, {
+    let res = await axios.post(`https://holosquad-backend.onrender.com/messages/sendMessage/${friendId}`, obj, {
       headers: {
         "Authorization": token
       }

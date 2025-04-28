@@ -10,8 +10,6 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { Link } from "react-router-dom"
 
 const PostButton = (props) => {
-  // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
-
   let ctx = useContext(UserContext);
   // console.log(ctx)
 
@@ -28,8 +26,6 @@ const PostButton = (props) => {
     file: "",
   });
 
-
-
   const handleSubmitPost = async () => {
     setLoading(true);
     setTimeout(() => {
@@ -37,11 +33,7 @@ const PostButton = (props) => {
       setOpen(false);
     }, 2000);
 
-
-
-
-    // let res = await axios.post(url+"/posts/create", details, {
-    let res = await axios.post("http://localhost:4000/posts/create", details, {
+    let res = await axios.post("https://holosquad-backend.onrender.com/posts/create", details, {
       headers: {
         "Authorization": ctx.user.token
       }

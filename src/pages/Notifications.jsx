@@ -12,7 +12,7 @@ const Notifications = ({ userId }) => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/notifications/getnotify/${ctx.user.userId}`);
+        const response = await axios.get(`https://holosquad-backend.onrender.com/notifications/getnotify/${ctx.user.userId}`);
         setNotifications(response.data);
         console.log(notifications)
       } catch (error) {

@@ -24,7 +24,7 @@ const Chats = () => {
 
   const navigate = useNavigate();
 
-  let endPoint = 'http://localhost:4000'
+  let endPoint = 'https://holosquad-backend.onrender.com'
   let socketRef = useRef();
   const [messageBySocket, setMessageBySocket] = useState("");
 
@@ -41,7 +41,7 @@ const Chats = () => {
   const handleSelectedFriend = async (user) => {
     navigate(`?friendId=${user?._id}`, { replace: true });
     // let res  = await axios.get(url + `/messages/getChats/${user?._id}`, {
-    let res = await axios.get(`http://localhost:4000/messages/getChats/${user?._id}`, {
+    let res = await axios.get(`https://holosquad-backend.onrender.com/messages/getChats/${user?._id}`, {
       headers: {
         "Authorization": ctx.user.token
       }
@@ -56,7 +56,7 @@ const Chats = () => {
     setFriend(user)
 
     //Sending Notification of Like
-    let noti = await axios.post("http://localhost:4000/notifications/send", {
+    let noti = await axios.post("https://holosquad-backend.onrender.com/notifications/send", {
       recipient: user?._id,
       sender: userId,
       type: "Message",
@@ -77,7 +77,7 @@ const Chats = () => {
       text: message
     }
 
-    let res = await axios.post(`http://localhost:4000/messages/sendMessage/${friendId}`, obj, {
+    let res = await axios.post(`https://holosquad-backend.onrender.com/messages/sendMessage/${friendId}`, obj, {
       headers: {
         "Authorization": ctx?.user?.token
       }

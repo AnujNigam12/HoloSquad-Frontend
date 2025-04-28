@@ -12,41 +12,29 @@ import UserFollowersFollowings from '../components/UserFollowersFollowings';
 import PostPage from './UserPosts'
 
 const ProfilePage = () => {
-  // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
-
   const [setting, setSetting] = useState(false);
-
-
   const [image, setImage] = useState(false);
-
-
   const [coverImage, setCoverImage] = useState(false);
-
-
+  
   const [name, setName] = useState({
     name: ""
   });
-
 
   const [bio, setBio] = useState({
     bio: ""
   })
 
-
   const [city, setCity] = useState({
     city: ""
   })
-
 
   const [password, setPassword] = useState({
     password: ""
   })
 
-
   const [contact, setContact] = useState({
     contact: ""
   })
-
 
 
   const [nameloading, setNameLoading] = useState(false);
@@ -87,7 +75,7 @@ const ProfilePage = () => {
   const getUserDetails = async () => {
 
     //  let res = await axios.get(url + "/users/getUserDetails", {
-    let res = await axios.get("http://localhost:4000/users/getUserDetails", {
+    let res = await axios.get("https://holosquad-backend.onrender.com/users/getUserDetails", {
       headers: {
         Authorization: token
       }
@@ -121,7 +109,7 @@ const ProfilePage = () => {
       if (data) {
         setImage(false);
         // let res1 = await fetch(url + `/users/update/${userId}`,{
-        let res1 = await fetch(`http://localhost:4000/users/update/${userId}`, {
+        let res1 = await fetch(`https://holosquad-backend.onrender.com/users/update/${userId}`, {
           method: "PUT",
           headers: {
             "Content-type": "application/json",
@@ -183,7 +171,7 @@ const ProfilePage = () => {
       if (data) {
         setCoverImage(false);
         // let res1 = await fetch(url + `/users/update/${userId}`,{
-        let res1 = await fetch(`http://localhost:4000/users/update/${userId}`, {
+        let res1 = await fetch(`https://holosquad-backend.onrender.com/users/update/${userId}`, {
           method: "PUT",
           headers: {
             "Content-type": "application/json",
@@ -274,7 +262,7 @@ const ProfilePage = () => {
 
     try {
       // let res = await fetch(url + `/users/update/${userId}`, {
-      let res = await fetch(`http://localhost:4000/users/update/${userId}`, {
+      let res = await fetch(`https://holosquad-backend.onrender.com/users/update/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -357,7 +345,7 @@ const ProfilePage = () => {
 
     try {
       // let res = await fetch(url + `/users/update/${userId}`,{
-      let res = await fetch(`http://localhost:4000/users/update/${userId}`, {
+      let res = await fetch(`https://holosquad-backend.onrender.com/users/update/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -442,7 +430,7 @@ const ProfilePage = () => {
 
     try {
       // let res = await axios.put(url + `/users/update/${userId}`,contact, {
-      let res = await axios.put(`http://localhost:4000/users/update/${userId}`, contact, {
+      let res = await axios.put(`https://holosquad-backend.onrender.com/users/update/${userId}`, contact, {
         headers: {
           "Authorization": token
         }
@@ -516,7 +504,7 @@ const ProfilePage = () => {
 
     try {
       // let res = await fetch(url + `/users/update/${userId}`,{
-      let res = await fetch(`http://localhost:4000/users/update/${userId}`, {
+      let res = await fetch(`https://holosquad-backend.onrender.com/users/update/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -594,7 +582,7 @@ const ProfilePage = () => {
 
     try {
       // let res = await fetch(url + `/users/update/${userId}`, {
-      let res = await fetch(`http://localhost:4000/users/update/${userId}`, {
+      let res = await fetch(`https://holosquad-backend.onrender.com/users/update/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

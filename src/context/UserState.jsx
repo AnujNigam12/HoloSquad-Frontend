@@ -5,7 +5,6 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 
 const UserState = (props) => {
-    // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
     const [count, setCount] = useState(0)
     const [messCount, setMessCount] = useState(0)
 
@@ -26,11 +25,6 @@ const addUser = (ans) => {
 
     const decoded = jwtDecode(ans.token)
     const UserId = decoded.id;
-
-    // console.log(UserId)
-    // console.log(ans)
-
-    // page refresh hone se save karne ke liye use local storage
 
     localStorage.setItem("userLogin", JSON.stringify({
         login: true,
@@ -59,8 +53,7 @@ const removeUser = () => {
 const loginUserDetails = async () => {
     if (user.login) {
         try {
-            // let res = await axios.get(url + "/users/getUserDetails", {
-            let res = await axios.get("http://localhost:4000/users/getUserDetails", {
+            let res = await axios.get("https://holosquad-backend.onrender.com/users/getUserDetails", {
                 headers: {
                     Authorization : user.token
                 }

@@ -5,10 +5,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 const UserPosts = () => {
-  // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
-
    const [yourAllPosts, setYourAllPosts] =  useState([]);
-
 
     let ctx = useContext(UserContext);
     console.log(ctx);
@@ -18,7 +15,7 @@ const UserPosts = () => {
 
    const getYourAllPosts = async () => {
     // let res = await axios.get(url + "/posts/getYourAllPosts",{
-    let res = await axios.get("http://localhost:4000/posts/getYourAllPosts",{
+    let res = await axios.get("https://holosquad-backend.onrender.com/posts/getYourAllPosts",{
         headers: {
             Authorization: token
         }

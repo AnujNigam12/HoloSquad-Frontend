@@ -10,7 +10,7 @@ const UsersList = () => {
     console.log(ctx);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/users/allUsers')
+        axios.get('https://holosquad-backend.onrender.com/users/allUsers')
             .then(response => setUsers(response.data))
             .catch(error => console.error("Error fetching users:", error));
     }, []);

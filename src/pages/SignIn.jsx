@@ -6,8 +6,6 @@ import UserContext from '../context/UserContext';
 import Logo from '../assets/Logo.jpeg'
 
 const SignIn = () => {
-  // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
-
   const ctx = useContext(UserContext)
 
   // console.log(ctx)
@@ -30,7 +28,7 @@ const handleClick = async (e) => {
   // after , obj will automatically goes in req.body
 
   // let res = await axios.post(url + "/users/login", obj);
-  let res = await axios.post("http://localhost:4000/users/login", obj);
+  let res = await axios.post("https://holosquad-backend.onrender.com/users/login", obj);
 
 
   let data = await res.data;

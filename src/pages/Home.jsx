@@ -16,8 +16,6 @@ import { Link } from 'react-router-dom';
 import SuggestedFriends from './SuggestedFriends';
 
 const Home = () => {
-  // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
-
   const [commentOpen, setCommentOpen] = useState(false);
   const [selectedPost, setSelectedPost] = useState({})
   const [commentInput, setCommentInput] = useState({})
@@ -30,7 +28,7 @@ const Home = () => {
 
   const getAllPosts = async () => {
     // let res = await axios.get(url + "/posts/getAllPost");
-    let res = await axios.get("http://localhost:4000/posts/getAllPost");
+    let res = await axios.get("https://holosquad-backend.onrender.com/posts/getAllPost");
     let data = res.data.post;
 
     const updatedData = data.map((post) => ({
@@ -71,7 +69,7 @@ const Home = () => {
     }
 
     // let res = await axios.post(url + `/posts/commentPost/${ele._id}`, obj, {
-    let res = await axios.post(`http://localhost:4000/posts/commentPost/${ele._id}`, obj, {
+    let res = await axios.post(`https://holosquad-backend.onrender.com/posts/commentPost/${ele._id}`, obj, {
       headers: {
         Authorization: ctx.user.token
       }
@@ -100,7 +98,7 @@ const Home = () => {
     console.log(ele._id);
 
     // let res = await axios.delete(url + `/posts/deleteComment/${commentId}/${postId}`);
-    let res = await axios.delete(`http://localhost:4000/posts/deleteComment/${commentId}/${postId}`);
+    let res = await axios.delete(`https://holosquad-backend.onrender.com/posts/deleteComment/${commentId}/${postId}`);
     let data = await res.data;
     console.log(data);
 
@@ -124,7 +122,7 @@ const Home = () => {
     let token = ctx.user.token;
 
     // let res = await axios.put(url + `/posts/likesPost/${postId}`, {}, {
-    let res = await axios.put(`http://localhost:4000/posts/likesPost/${postId}`, {}, {
+    let res = await axios.put(`https://holosquad-backend.onrender.com/posts/likesPost/${postId}`, {}, {
       headers: {
         Authorization: token
       }
@@ -141,7 +139,7 @@ const Home = () => {
     }
 
     //Sending Notification of Like
-    let noti = await axios.post("http://localhost:4000/notifications/send", {
+    let noti = await axios.post("https://holosquad-backend.onrender.com/notifications/send", {
       recipient: ele?.userId?._id,
       sender: ctx.user.userId,
       type: "Like",

@@ -8,8 +8,6 @@ import { IoNotificationsCircle } from "react-icons/io5";
 import Logo from '../assets/Logo.jpeg'
 
 const Navbar = () => {
-      // let url = import.meta.env.VITE_DEPLOYMENT==="Production"?import.meta.env.VITE_ENDPOINT:"http://localhost:4000";
-
       const [search, setSearch] = useState([]);
       const [inputValue, setInputValue] = useState(''); // Track input value
 
@@ -30,7 +28,7 @@ const Navbar = () => {
             setInputValue(value); // Update input value state
 
             //   let res = await fetch(url + `/users/getUserBySearch?q=${value}`,{
-            let res = await fetch(`http://localhost:4000/users/getUserBySearch?q=${value}`, {
+            let res = await fetch(`https://holosquad-backend.onrender.com/users/getUserBySearch?q=${value}`, {
 
                   method: "GET",
                   headers: {
